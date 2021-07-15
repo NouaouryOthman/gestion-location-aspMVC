@@ -1,0 +1,74 @@
+﻿@model Projet.Models.Location
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@if (Request.IsAuthenticated)
+{
+    <h2>Details</h2>
+
+    <div>
+        <h4>Location</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Agence.Ville)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Agence.Ville)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Client.Nom)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Client.Nom)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Vehicule.Marque)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Vehicule.Marque)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateDebut)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateDebut)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateFin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateFin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Prix)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Prix)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdLocation }) |
+        @Html.ActionLink("Retour à la liste", "Index")
+    </p>
+}
+else
+{
+    <p><h2>Veuillez-Vous connecter pour voir le contenu de cette page!</h2></p>
+    @Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+}

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Projet.Models.Client>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (Request.IsAuthenticated)
+{
+    <h2>Les Clients</h2>
+
+    <p>
+        @Html.ActionLink("Ajouter un Client", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumCIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumPermis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Experience)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumTel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prenom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumCIN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumPermis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Experience)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumTel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdClient }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdClient }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdClient })
+                </td>
+            </tr>
+        }
+
+
+    </table>
+}
+else
+{
+    <p><h2>Veuillez-Vous connecter pour voir le contenu de cette page!</h2></p>
+    @Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+}

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Projet.Models.Vehicule>
+
+@{
+    ViewBag.Title = "Disponnible";
+}
+
+<h2>Nos Voitures Disponnible dans le Royaume</h2>
+
+<p>&nbsp;</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Agence.Ville)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Marque)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modele)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Couleur)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Agence.Ville)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Marque)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modele)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Couleur)
+        </td>
+        <td>
+            @Html.ActionLink("Réserver", "Create", "Reservations", new { id = item.IdVehicule}, null)
+        </td>
+    </tr>
+}
+
+</table>

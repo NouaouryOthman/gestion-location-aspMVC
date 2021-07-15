@@ -1,0 +1,64 @@
+﻿@model Projet.Models.Agence
+
+@{
+    ViewBag.Title = "Details";
+}
+@if (Request.IsAuthenticated)
+{
+    <h2>Details</h2>
+
+    <div>
+        <h4>Agence</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Ville)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ville)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Telephone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Telephone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Etat)
+            </dt>
+
+            <dd>
+                @if (Model.Etat == true)
+                {
+                    <p>Oui</p>
+                }
+                else
+                {
+                    <p>Non</p>
+                }
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdAgence }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+else
+{
+    <p><h2>Veuillez-Vous connecter pour voir le contenu de cette page!</h2></p>
+    @Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+}

@@ -1,0 +1,82 @@
+﻿@model Projet.Models.Client
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@if (Request.IsAuthenticated)
+{
+    <h2>Details</h2>
+
+    <div>
+        <h4>Client</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nom)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nom)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Prenom)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Prenom)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumCIN)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumCIN)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumPermis)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumPermis)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Experience)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Experience)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumTel)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumTel)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdClient }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+else
+{
+    <p><h2>Veuillez-Vous connecter pour voir le contenu de cette page!</h2></p>
+    @Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+}

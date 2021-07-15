@@ -1,0 +1,99 @@
+﻿@model Projet.Models.Vehicule
+
+@{
+    ViewBag.Title = "Details";
+}
+@if (Request.IsAuthenticated)
+{
+    <h2>Details</h2>
+
+    <div>
+        <h4>Vehicule</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Agence.Ville)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Agence.Ville)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Marque)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Marque)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Modele)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Modele)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Immatricule)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Immatricule)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Couleur)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Couleur)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Km)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Km)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Etat)
+            </dt>
+
+            <dd>
+                @if (Model.Etat == true)
+                {
+                    <p>Oui</p>
+                }
+                else
+                {
+                    <p>Non</p>
+                }
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdVehicule }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    <script>
+    var myLatLng = new google.maps.LatLng(  @Html.DisplayNameFor(model => model.Localisation.Latitude) ,  @Html.DisplayNameFor(model => model.Localisation.Longitude));
+    var beachMarker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        icon: image
+    });
+
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false">
+    </script>
+}
+else
+{
+    <p><h2>Veuillez-Vous connecter pour voir le contenu de cette page!</h2></p>
+    @Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+}

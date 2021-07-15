@@ -1,0 +1,88 @@
+﻿@model Projet.Models.Client
+
+@{
+    ViewBag.Title = "Delete";
+}
+@if (Request.IsAuthenticated)
+{
+    <h2>Supprimer</h2>
+
+    <h3>Etes-vous sur de supprimer ce client?</h3>
+    <div>
+        <h4>Client</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nom)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nom)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Prenom)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Prenom)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumCIN)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumCIN)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumPermis)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumPermis)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Experience)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Experience)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumTel)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumTel)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p><h2>Veuillez-Vous connecter pour voir le contenu de cette page!</h2></p>
+    @Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+}

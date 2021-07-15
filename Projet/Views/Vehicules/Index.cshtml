@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Projet.Models.Vehicule>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if (Request.IsAuthenticated)
+{
+    <h2>Les Voitures</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Agence.Ville)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modele)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Immatricule)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Couleur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Km)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etat)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Agence.Ville)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marque)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modele)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Immatricule)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Couleur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Km)
+                </td>
+                <td>
+                    @if (item.Etat == true)
+                    {
+                        <p>Oui</p>
+                    }
+                    else
+                    {
+                        <p>Non</p>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdVehicule }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdVehicule }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdVehicule })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <p><h2>Veuillez-Vous connecter pour voir le contenu de cette page!</h2></p>
+    @Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+}

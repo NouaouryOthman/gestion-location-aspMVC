@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Projet.Models.Agence>
+
+@{
+    ViewBag.Title = "Index";
+}
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <h2>Les Agences</h2>
+
+    <p>
+        @Html.ActionLink("Ajouter une agence", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ville)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telephone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etat)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ville)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telephone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @if (item.Etat == true)
+                    {
+                        <p>Oui</p>
+                    }
+                    else
+                    {
+                        <p>Non</p>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdAgence }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdAgence }) |
+                    @Html.ActionLink("Supprimer", "Delete", new { id = item.IdAgence })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <p><h2>Veuillez-Vous connecter pour voir le contenu de cette page!</h2></p>
+    @Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+}
